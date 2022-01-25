@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body class="bg-dark text-white">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">Workshop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/cars}">Cars</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/departments}">Departments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/employees}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/customers}">Customers</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<table class="table table-dark">
+    <thead>
+    <th scope="col">#</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Department</th>
+    <th scope="col">Salary</th>
+    <th scope="col">Hire Date</th>
+    <th scope="col"></th>
+    </thead>
+    <tbody>
+    <form th:action="@{/employees/search}"  method="get">
+        <tr>
+            <td></td>
+            <td><input type="text" placeholder="First Name" th:name="fname" ></td>
+            <td><input type="text" placeholder="Last Name" th:name="lname" ></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><input type="submit" value="Search"></td>
+        </tr>
+
+    </form>
+    </tbody>
+    <tfoot>
+    <tr th:each="c: ${employee}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.fname}"></td>
+        <td th:text="${c.lname}"></td>
+        <td th:text="${c.phonenumber}"></td>
+        <td th:text="${c.departmentId}"></td>
+        <td th:text="${c.salary}"></td>
+        <td th:text="${c.hireDate}"></td>
+    </tr>
+    </tfoot>
+
+</table>
+</body>
+</html>
